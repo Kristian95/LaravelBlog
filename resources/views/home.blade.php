@@ -8,8 +8,8 @@
 	@if(!$posts->count())
 		There is no posts. Login and write a new post!
 	@else
-	<div class="">
 		@foreach($posts as $post)
+	<div class="">
 		<div class="list-group">
 			<div class="list-group-item">
 				<h3><a href="{{url('/'.$post->slug)}}">{{$post->title}}</a>
@@ -18,6 +18,7 @@
 						<button class="btn" style="float: right"><a href="{{url('edit/'.$post->slug)}}">Edit</a></button>
 						@else
 						<button class="btn" style="float:right"><a href="{{url('edit/'.$post->slug)}}">Edit Draft</a></button>
+						@endif
 					@endif
 				</h3>	
 				<p>{{$post->created_at->format('M d,Y \a\t h:i a')}} By <a href="{{url('/user/'.$post->author_id)}}">{{$post->author->name}}</a></p>
@@ -28,8 +29,8 @@
 				</article>
 			</div>
 		</div>
-		@endforeach
-		{!! $posts->render() !!}
 	</div>
+		@endforeach
 	@endif
+		{!! $posts->render() !!}
 @endsection
