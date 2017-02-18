@@ -11,11 +11,16 @@ class Posts extends Model
 	// returns all comments
 	public function comments()
 	{
-		return $this->hasMany('App\Comments','on_post');
+		return $this->hasMany('App\Comments');
 	}
 
 	public function author()
 	{
-		return $this->belongsTo('App\User','author_id');
+		return $this->belongsTo('App\User');
 	}
+
+	public function categories()
+    {
+    	return $this->belongsTo('App\Categories');
+    }
 }

@@ -15,7 +15,7 @@ Add New Post
 	}); 
 </script>
 
-<form action="/new-post" method="post">
+<form action="new-post" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group">
 		<input required="required" value="{{ old('title') }}" placeholder="Enter title here" type="text" name = "title"class="form-control" />
@@ -23,6 +23,14 @@ Add New Post
 	<div class="form-group">
 		<textarea name='body'class="form-control">{{ old('body') }}</textarea>
 	</div>
+	<select class="form-control" name="category_id">
+	    <option selected="selected">Choose one Category</option>
+		@if(!empty($categories) && isset($categories))
+			@foreach($categories as $category)
+				<option value='{{ $category->id }}'>{{ $category->title }}</option>
+			@endforeach
+		@endif
+	</select>
 	<input type="submit" name='publish' class="btn btn-success" value = "Publish"/>
 	<input type="submit" name='save' class="btn btn-default" value = "Save Draft" />
 </form>

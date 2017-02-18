@@ -51,6 +51,19 @@ Route::group(['middleware'=>['auth']],function()
 	Route::post('comment/delete/{id}','CommentController@destroy');
 });
 
+//Categories
+Route::get('categories','CategoriesController@index');
+
+Route::get('add-category','CategoriesController@create');
+
+Route::post('add-category','CategoriesController@store');
+
+Route::get('category/{id}/edit', 'CategoriesController@edit');
+
+Route::put('category/update','CategoriesController@update');
+
+Route::delete('category/delete/{id}','CategoriesController@destroy');
+
 //users profile
 Route::get('user/{id}','UserController@profile')->where('id','[0-9]+');
 
